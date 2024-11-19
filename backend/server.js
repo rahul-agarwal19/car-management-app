@@ -12,10 +12,10 @@ connectDB();
 // Middleware
 app.use(cors({
   origin: [
-    'https://car-management-9az4apxur-rahuls-projects-9d3a261c.vercel.app',
+    'https://car-management-8287sjgew-rahuls-projects-9d3a261c.vercel.app',
     'http://localhost:3000' // for local development
   ],
-  credentials: true,
+  credentials: false,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'Authorization']
 }));
