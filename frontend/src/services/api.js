@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://car-management-backend-qr8i.onrender.com',
+  baseURL: 'https://car-management-backend-qr8i.onrender.com/api',
   withCredentials: false
 });
 
