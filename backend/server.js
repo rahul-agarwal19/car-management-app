@@ -23,7 +23,9 @@ app.use(express.json());
 
 
 // Routes will be added here later
-
+app.get('/', (req, res) => {
+  res.json({ message: 'Car Management API is running' });
+});
 app.get('/test', (req, res) => {
   res.json({ message: 'Backend is working' });
 });
