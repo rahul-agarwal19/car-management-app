@@ -3,8 +3,18 @@ import axios from 'axios';
 const api = axios.create({
   baseURL: 'https://car-management-backend-qr8i.onrender.com/api',
   headers: {
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    'Accept': 'application/json'
   }
+});
+
+api.interceptors.request.use(request => {
+  console.log('API Request:', {
+    url: request.url,
+    method: request.method,
+    data: request.data
+  });
+  return request;
 });
 
 api.interceptors.request.use(
@@ -16,6 +26,22 @@ api.interceptors.request.use(
     return config;
   },
   (error) => Promise.reject(error)
+);
+
+api.interceptors.response.use(
+  response => {
+    console.log('API Response:', response.data);
+    return response;
+  },
+  error => {
+    console.log('API Error:', {
+      url: error.config?.url,
+      method: error.config?.method,
+      status: error.response?.status,
+      data: error.response?.data
+    });
+    throw error;
+  }
 );
 
 api.interceptors.response.use(

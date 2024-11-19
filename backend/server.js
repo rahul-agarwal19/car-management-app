@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
-const cors = require('cors');
+// const cors = require('cors');
 const connectDB = require('./config/db');
 
 const app = express();
@@ -10,15 +10,15 @@ const app = express();
 connectDB();
 
 // Middleware
-app.use(cors({
-  origin: [
-    'https://car-management-app-kappa.vercel.app',
-    'http://localhost:3000' // for local development
-  ],
-  credentials: false,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'Authorization']
-}));
+// app.use(cors({
+//   origin: [
+//     'https://car-management-app-kappa.vercel.app',
+//     'http://localhost:3000' // for local development
+//   ],
+//   credentials: false,
+//   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+//   allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'Authorization']
+// }));
 app.use(express.json());
 
 
