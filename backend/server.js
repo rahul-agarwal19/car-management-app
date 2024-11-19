@@ -24,6 +24,9 @@ app.use(express.json());
 
 // Routes will be added here later
 
+app.get('/test', (req, res) => {
+  res.json({ message: 'Backend is working' });
+});
 app.use('/api/users', require('./routes/userRoutes'));
 app.use('/api/cars', require('./routes/carRoutes'));
 
