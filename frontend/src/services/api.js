@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: process.env.REACT_APP_API_URL || 'http://localhost:5000/api',
-  withCredentials: true
+  baseURL: 'https://car-management-backend-qr8i.onrender.com',
+  withCredentials: false
 });
 
 // Add a request interceptor for authentication
