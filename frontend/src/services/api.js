@@ -2,10 +2,11 @@ import axios from 'axios';
 
 const api = axios.create({
   baseURL: 'https://car-management-backend-qr8i.onrender.com/api',
-  withCredentials: false
+  headers: {
+    'Content-Type': 'application/json'
+  }
 });
 
-// Add a request interceptor for authentication
 api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem('token');
@@ -14,19 +15,13 @@ api.interceptors.request.use(
     }
     return config;
   },
-  (error) => {
-    return Promise.reject(error);
-  }
+  (error) => Promise.reject(error)
 );
 
-// Add a response interceptor for handling errors
 api.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (error.response?.status === 401) {
-      localStorage.removeItem('token');
-      window.location.href = '/login';
-    }
+    console.error('API Error:', error.response?.data || error);
     return Promise.reject(error);
   }
 );
